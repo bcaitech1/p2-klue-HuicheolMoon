@@ -1,6 +1,5 @@
 # Pstage_03_KLUE_Relation_Extraction
 
----
 - [Relation Extraction](#relation-extraction)
   - [Task](#Task)
 - [Model](#model)
