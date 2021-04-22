@@ -58,8 +58,7 @@ def train(args):
   model = AutoModelForSequenceClassification.from_pretrained(args.model_name, config=config) 
   model.to(device)
   
-  # 사용한 option 외에도 다양한 option들이 있습니다.
-  # https://huggingface.co/transformers/main_classes/trainer.html#trainingarguments 참고해주세요.
+  # training arguments
   training_args = TrainingArguments(
     output_dir=args.output_dir,                   # output directory
     save_total_limit=args.save_total_limit,       # number of total save model.
@@ -92,7 +91,7 @@ def main(args):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-
+  # training arguments 및 hyperparameter 설정
   parser.add_argument('--model_name', type=str, default="xlm-roberta-large")
   parser.add_argument('--seed', type=int, default = 2021)
   parser.add_argument('--output_dir', type=str, default='./results')
