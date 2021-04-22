@@ -1,11 +1,13 @@
-# Pstage_03_KLUE_Relation_extraction
+# Pstage_03_KLUE_Relation_extraction 
+# With  xml-Roberta-large
 
 ### training
-* python train.py
+* python train.py + [train conditions]
 
 ### inference
-* python inference.py --model_dir=[model_path]
-* ex) python inference.py --model_dir=./results/checkpoint-500
+* python inference.py + [train conditions]
 
 ### evaluation
-* python eval_acc.py
+* python eval_acc.py  + [train conditions]
+
+Please refer to the inside of the python file for conditions for tarin & inference.
