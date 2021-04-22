@@ -17,7 +17,7 @@ def inference(model, tokenized_sent, device):
       outputs = model(
           input_ids=data['input_ids'].to(device),
           attention_mask=data['attention_mask'].to(device),
-          #token_type_ids=data['token_type_ids'].to(device)
+          #token_type_ids=data['token_type_ids'].to(device) # DONT need for xml-Roberta-large
           )
     logits = outputs[0]
     logits = logits.detach().cpu().numpy()
@@ -35,9 +35,6 @@ def load_test_dataset(dataset_dir, tokenizer):
   return tokenized_test, test_label
 
 def main(args):
-  """
-    주어진 dataset tsv 파일과 같은 형태일 경우 inference 가능한 코드입니다.
-  """
   device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
   # load tokenizer 
@@ -56,7 +53,6 @@ def main(args):
   pred_answer = inference(model, test_dataset, device)
 
   # make csv file with predicted answer
-  # 아래 directory와 columns의 형태는 지켜주시기 바랍니다.
   output = pd.DataFrame(pred_answer, columns=['pred'])
   output.to_csv(args.output_dir, index=False)
 
@@ -69,4 +65,3 @@ if __name__ == '__main__':
   args = parser.parse_args()
   print(args)
   main(args)
-  
