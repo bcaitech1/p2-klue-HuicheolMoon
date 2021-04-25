@@ -82,7 +82,7 @@ Please refer to inference.py for inference arguments. (Optional)
 
 ### evaluation
 ```
-* python eval_acc.py
+python eval_acc.py
 ```
 
 ## License
